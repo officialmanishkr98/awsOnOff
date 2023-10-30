@@ -1,0 +1,43 @@
+version: '3'
+services:
+  ecs:
+    build:
+      context: ../
+      dockerfile: ./docker/Dockerfile
+      args:
+        service: ${service}
+        region: ${region}
+        action: ${action}
+        cluster_name: ${cluster_name}
+        start_desired_count: ${start_desired_count}
+        stop_desired_count: ${stop_desired_count}
+        AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+        AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+        AWS_SESSION_TOKEN: ${AWS_SESSION_TOKEN}
+        
+  rds:
+    build:
+      context: ../
+      dockerfile: ./docker/Dockerfile
+      args:
+        service: ${service}
+        region: ${region}
+        action: ${action}
+        db_cluster_identifiers: ${db_cluster_identifiers}
+        AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+        AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+        AWS_SESSION_TOKEN: ${AWS_SESSION_TOKEN}
+
+  ec2:
+    build:
+      context: ../
+      dockerfile: ./docker/Dockerfile
+      args:
+        service: ${service}
+        region: ${region}
+        instance_id: ${instance_id}
+        action: ${action}
+        AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+        AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+        AWS_SESSION_TOKEN: ${AWS_SESSION_TOKEN}
+       

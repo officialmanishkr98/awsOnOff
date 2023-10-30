@@ -1,0 +1,3 @@
+start_desired_count : 1
+stop_desired_count  : 0
+region : "us-west-2"
