@@ -11,8 +11,8 @@ def manage_ecs_clusters(region, action):
         with open('default_config.yaml', 'r') as yaml_file:
             config = yaml.safe_load(yaml_file)
 
-        start_desired_count = int(os.getenv('start_desired_count')) if os.getenv('start_desired_count') else config['start_desired_count']
-        stop_desired_count  = int(os.getenv('stop_desired_count'))  if os.getenv('stop_desired_count')  else config['stop_desired_count']
+        start_desired_count = int(os.getenv('start_desired_count')) if os.getenv('start_desired_count') else 1
+        stop_desired_count  = int(os.getenv('stop_desired_count'))  if os.getenv('stop_desired_count')  else 0
 
         all_cluster_name = os.getenv('cluster_name')
         if all_cluster_name :
