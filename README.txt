@@ -1,109 +1,84 @@
-# awsOnOff Python Module Readme
+AWS EC2 Instance Management
+This Python module provides a set of functions to start and stop Amazon Elastic Compute Cloud (EC2) instances in specified AWS regions. It utilizes the AWS SDK for Python (Boto3) to interact with AWS resources.
 
-The `awsOnOff` Python module is a utility for managing Amazon Web Services (AWS) Elastic Compute Cloud (EC2) instances. It provides a simple and convenient way to start and stop EC2 instances in a specified AWS region. This module is particularly useful for automating EC2 instance management tasks.
+Table of Contents
+Installation
+Usage
+Functions
+Examples
+Contributing
+Installation
+You can install this package using pip:
 
-## Installation
+bash
+Copy code
+pip install awsOnOff-ec2
+Usage
+Before using these functions, make sure you have your AWS credentials properly configured. You can configure your AWS credentials using the AWS CLI or by setting environment variables.
 
-You can install the `awsOnOff` module using `pip`. Please make sure you have Python installed on your system before proceeding.
+bash
+Copy code
+export AWS_ACCESS_KEY_ID=your_access_key_id
+export AWS_SECRET_ACCESS_KEY=your_secret_access_key
+Functions
+start_ec2(instance_id, region)
+Starts one or more EC2 instances specified by their instance IDs in the given AWS region.
 
-```bash
-pip install awsOnOff
-```
+instance_id (str): A comma-separated string of EC2 instance IDs or a single instance ID.
+region (str): The AWS region in which the instances are located.
+start_all_ec2(region)
+Starts all EC2 instances in the given AWS region.
 
-## Usage
+region (str): The AWS region in which you want to start all instances.
+stop_ec2(instance_id, region)
+Stops one or more EC2 instances specified by their instance IDs in the given AWS region.
 
-The `awsOnOff` module includes functions for starting and stopping EC2 instances. You will need to provide the instance IDs and the AWS region as parameters.
+instance_id (str): A comma-separated string of EC2 instance IDs or a single instance ID.
+region (str): The AWS region in which the instances are located.
+stop_all_ec2(region)
+Stops all EC2 instances in the given AWS region.
 
-### Importing the Module
+region (str): The AWS region in which you want to stop all instances.
+Examples
+Here are some examples of how to use the provided functions:
 
-To use the module, you should import it as follows:
-
-```python
+Starting Specific EC2 Instances
+python
+Copy code
 import awsOnOff.ec2 as ec2
-```
 
-### Starting an EC2 Instance
+instance_ids = "i-1234567890abcdef0, i-0987654321abcdef1"
+region = "us-east-1"
 
-You can start one or more EC2 instances using the `start_ec2` function. The function accepts the instance ID(s) and the AWS region as parameters.
+ec2.start_ec2(instance_ids, region)
+Starting All EC2 Instances in a Region
+python
+Copy code
+import awsOnOff.ec2 as ec2
 
-```python
-ec2.start_ec2(instance_id, region)
-```
+region = "us-west-2"
 
-- `instance_id`: A string containing the instance ID(s) of the EC2 instance(s) you want to start. You can provide multiple instance IDs separated by commas (`,`).
-- `region`: The AWS region where the instances are located.
-
-Example:
-```python
-ec2.start_ec2("i-12345678", "us-east-1")
-```
-
-### Starting All EC2 Instances
-
-To start all EC2 instances in a specified region, you can use the `start_all_ec2` function:
-
-```python
 ec2.start_all_ec2(region)
-```
+Stopping Specific EC2 Instances
+python
+Copy code
+import awsOnOff.ec2 as ec2
 
-- `region`: The AWS region where you want to start all EC2 instances.
+instance_ids = "i-1234567890abcdef0, i-0987654321abcdef1"
+region = "us-east-1"
 
-Example:
-```python
-ec2.start_all_ec2("us-west-2")
-```
+ec2.stop_ec2(instance_ids, region)
+Stopping All EC2 Instances in a Region
+python
+Copy code
+import awsOnOff.ec2 as ec2
 
-### Stopping an EC2 Instance
+region = "us-west-2"
 
-You can stop one or more EC2 instances using the `stop_ec2` function. The function accepts the instance ID(s) and the AWS region as parameters.
-
-```python
-ec2.stop_ec2(instance_id, region)
-```
-
-- `instance_id`: A string containing the instance ID(s) of the EC2 instance(s) you want to stop. You can provide multiple instance IDs separated by commas (`,`).
-- `region`: The AWS region where the instances are located.
-
-Example:
-```python
-ec2.stop_ec2("i-12345678", "us-east-1")
-```
-
-### Stopping All EC2 Instances
-
-To stop all EC2 instances in a specified region, you can use the `stop_all_ec2` function:
-
-```python
 ec2.stop_all_ec2(region)
-```
+Contributing
+Contributions to this project are welcome. If you find any issues or have suggestions for improvements, please open an issue or submit a pull request on GitHub.
 
-- `region`: The AWS region where you want to stop all EC2 instances.
+Note: Make sure to replace the placeholder link in the "GitHub" section with the actual link to your repository.
 
-Example:
-```python
-ec2.stop_all_ec2("us-west-2")
-```
-
-## Error Handling
-
-The module includes error handling to ensure that you provide the required parameters:
-
-- If you do not provide a region, an `Exception` is raised with the message "Must Provide Region."
-- If you do not provide instance IDs, an `Exception` is raised with the message "Must Provide instance_id."
-
-## Contribution
-
-Contributions to this module are welcome. If you would like to contribute, please follow the best practices for Python modules, write tests, and create a pull request.
-
-## License
-
-This module is provided under the MIT License. See the LICENSE file for more details.
-
-## Contact
-
-If you have any questions or encounter issues, please feel free to contact the author of this module.
-
-Author: [Your Name]
-Email: [Your Email Address]
-
-Thank you for using the `awsOnOff` module. We hope it simplifies your EC2 instance management tasks in AWS.
+Enjoy managing your AWS EC2 instances with ease using this Python module! If you encounter any problems or have questions, feel free to reach out for assistance.
