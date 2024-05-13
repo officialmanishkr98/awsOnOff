@@ -1,4 +1,5 @@
-```markdown
+---
+
 # AWS EC2 Instance Management
 
 This Python module provides a set of functions to start and stop Amazon Elastic Compute Cloud (EC2) instances in specified AWS regions. It utilizes the AWS SDK for Python (Boto3) to interact with AWS resources.
